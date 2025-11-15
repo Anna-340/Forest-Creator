@@ -28,6 +28,9 @@ class ForestCreator:
     # rock = editted cube shape
     # mushroom = cylinder for stem and upsidedown cone for cap
     def create_tree(self):
+        trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
+                                  name="tree_trunk")[0]
+        cmds.move(0, 2, 0, trunk)
 
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
