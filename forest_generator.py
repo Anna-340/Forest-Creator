@@ -21,11 +21,15 @@ class ForestCreator:
     # - tab for colors, user can also pick colors 
     # at the bottom there will be a create forest button and a clear scene option
     # add status bar at bottom for user
+    def __init__(self, parent=None):
+        super(ForestCreator, self).__init__(parent)
+        self.setWindowTitle("Forest Creator! :D")
+        self.setMinimumSize(900, 700)
+        self.setObjectName("ForestCreator")
 
-    #def for creating trees, mushrooms, and rocks using simple geometry,
-    #  but just the bare assets for duplicating later
-    # rock = editted cube shape
-    # mushroom = cylinder for stem and upsidedown cone for cap
+        self.generated_assets = {}
+        self.scatter_objects = []
+        
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
@@ -56,6 +60,8 @@ class ForestCreator:
 
         mushroom_group = cmds.group([stem, cap], name="full_mushroom")
         return mushroom_group
+    
+    def clean_base_assets(self):
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
