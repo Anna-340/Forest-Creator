@@ -22,12 +22,12 @@ class ForestCreator:
     # at the bottom there will be a create forest button and a clear scene option
     # add status bar at bottom for user
 
-
     #def for creating trees, mushrooms, and rocks using simple geometry,
     #  but just the bare assets for duplicating later
     # tree = cylinder for trunk and editted sphere for leaves
     # rock = editted cube shape
     # mushroom = cylinder for stem and upsidedown cone for cap
+    def create_tree(self):
 
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
