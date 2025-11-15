@@ -89,7 +89,13 @@ class ForestCreator:
         return mushroom_group
     
     def generate_base_assets(self):
-        self.status_label.setText("Genera")
+        self.status_label.setText("Generating base assets...")
+        self.clean_base_assets()
+
+        self.generated_assets['tree'] = self.create_tree()
+        self.generated_assets['rock'] = self.create_rock()
+        self.generated_assets['mushroom'] = self.create_mushroom()
+        self.status_label.setText("Base assets generated!")
 
     def clean_base_assets(self):
         for asset_name, asset in list(self.generated_assets.items()):
