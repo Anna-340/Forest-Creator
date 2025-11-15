@@ -32,6 +32,12 @@ class ForestCreator:
                                   name="tree_trunk")[0]
         cmds.move(0, 2, 0, trunk)
 
+        foliage = cmds.polySphere(radius=1.5, sx=8, sy=6, name="tree_leaves")[0]
+        cmds.move(0, 5, 0, foliage)
+
+        tree_group = cmds.group([trunk, foliage], name="base_tree")
+        return tree_group
+
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
