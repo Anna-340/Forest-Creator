@@ -83,6 +83,14 @@ class ForestCreator:
         return mushroom_group
     
     def clean_base_assets(self):
+        for asset_name, asset in list(self.generated_assets.items()):
+            if cmds.objExists(asset):
+                try:
+                    cmds.delete(asset)
+                except:
+                    pass
+        self.generated_assets = {}
+        
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
