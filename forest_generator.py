@@ -29,7 +29,28 @@ class ForestCreator:
 
         self.generated_assets = {}
         self.scatter_objects = []
+
+    def setup_ui(self):
+        main_layout = QVBoxLayout(self)
+        main_layout.setSpacing(10)
+        main_layout.setContentsMargins(15, 15, 15, 15)
+
+        title_label = QLabel("Forest Creator!")
+        title_label.setStyleSheet(
+            "font-size: 18px; font-weight: bold; color: #2E8B57;")
+        title_label.setAlignment(Qt.AlignCenter)
+        main_layout.addWidget(title_label)
         
+        tab_widget = QTabWidget()
+        tab_widget.setStyleSheet("""
+                                 QtabWidget::pane { border: 1px solid #C4C4C4; }
+                                 QTabBar::tab {background: #F0F0F0; 
+                                 padding: 8px 12px; 
+                                 margin-right: 2px;}
+                                 QTabBar::tab:selected {background: #2e8b57; 
+                                 color: white;}""")
+        
+
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
