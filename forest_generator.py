@@ -45,6 +45,9 @@ class ForestCreator:
         cmds.select(clear=True)
 
         return rock
+    
+    def create_mushroom(self):
+        
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
