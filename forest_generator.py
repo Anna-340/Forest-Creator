@@ -50,6 +50,12 @@ class ForestCreator:
                                  QTabBar::tab:selected {background: #2e8b57; 
                                  color: white;}""")
         
+    def status_bar(self, layout):
+        status_layout = QHBoxLayout()
+        self.status_label = QLabel("Ready to generate forest assets")
+        self.status_label.setStyleSheet("padding: 5px; background-color: #F5F5F5; border: 1px solid #DDD;")
+        status_layout.addWidget(self.status_label)
+        layout.addLayout(status_layout)
 
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
@@ -82,6 +88,9 @@ class ForestCreator:
         mushroom_group = cmds.group([stem, cap], name="full_mushroom")
         return mushroom_group
     
+    def generate_base_assets(self):
+        self.status_label.setText("Genera")
+
     def clean_base_assets(self):
         for asset_name, asset in list(self.generated_assets.items()):
             if cmds.objExists(asset):
@@ -90,7 +99,9 @@ class ForestCreator:
                 except:
                     pass
         self.generated_assets = {}
-        
+
+    
+
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
