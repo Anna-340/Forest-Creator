@@ -30,6 +30,9 @@ class ForestCreator:
         self.generated_assets = {}
         self.scatter_objects = []
 
+        self.setup_ui()
+        self.generate_base_assets()
+
     def setup_ui(self):
         main_layout = QVBoxLayout(self)
         main_layout.setSpacing(10)
