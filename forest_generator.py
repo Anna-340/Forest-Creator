@@ -47,7 +47,15 @@ class ForestCreator:
         return rock
     
     def create_mushroom(self):
-        
+        stem = cmds.polyCylinder(radius=0.1, height=0.8, sx=6, 
+                                 name="mushroom_stem")[0]
+        cmds.move(0, 0.4, 0, stem)
+        cap = cmds.polyCone(radius=0.4, height=0.2, sx=8, name="mushroom_cap")[0]
+        cmds.move(0, 0.9, 0, cap)
+        cmds.rotate(180, 0, 0, cap)
+
+        mushroom_group = cmds.group([stem, cap], name="full_mushroom")
+        return mushroom_group
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
     # add random shuffle too
