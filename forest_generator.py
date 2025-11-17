@@ -21,6 +21,18 @@ class ForestCreator:
     # - tab for colors, user can also pick colors 
     # at the bottom there will be a create forest button and a clear scene option
     # add status bar at bottom for user
+
+     #def for creating forest, 
+    # duplicate assets for scattering around area from user settings
+    # add random shuffle too
+    # for each of the assets find a place on the plane where they wont overlap
+    # if there is an area that is free copy and place the asset there
+    # organize assets by groups to keep it organized 
+
+    #def for finding a place on the grid where no other asset is placed
+    # to avoid overlapping,
+
+
     def __init__(self, parent=None):
         super(ForestCreator, self).__init__(parent)
         self.setWindowTitle("Forest Creator! :D")
@@ -111,16 +123,4 @@ class ForestCreator:
 
 if __name__ == "__main__":
     create_mushroom()
-
-    #def for creating forest, 
-    # duplicate assets for scattering around area from user settings
-    # add random shuffle too
-    # for each of the assets find a place on the plane where they wont overlap
-    # if there is an area that is free copy and place the asset there
-    # organize assets by groups to keep it organized 
-
-    #def for finding a place on the grid where no other asset is placed
-    # to avoid overlapping,
-
-
 
