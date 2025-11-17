@@ -122,5 +122,9 @@ class ForestCreator:
         self.generated_assets = {}
 
 if __name__ == "__main__":
-    create_mushroom()
+    creator = ForestCreator()
+
+    tree = creator.create_tree()
+    rock = creator.create_rock()
+    mushroom = creator.create_mushroom()
 
