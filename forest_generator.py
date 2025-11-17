@@ -109,7 +109,8 @@ class ForestCreator:
                     pass
         self.generated_assets = {}
 
-    
+if __name__ == "__main__":
+    create_mushroom()
 
     #def for creating forest, 
     # duplicate assets for scattering around area from user settings
