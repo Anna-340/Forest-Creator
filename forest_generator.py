@@ -129,4 +129,6 @@ if __name__ == "__main__":
     tree = creator.create_tree()
     rock = creator.create_rock()
     mushroom = creator.create_mushroom()
+    user = creator.setup_ui()
+    window = creator.__init__()
 
