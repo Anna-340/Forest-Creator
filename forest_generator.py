@@ -65,6 +65,8 @@ class ForestCreator(QtWidgets.QDialog):
                                  QTabBar::tab:selected {background: #2e8b57; 
                                  color: white;}""")
         
+        self.status_bar(main_layout)
+        
     def status_bar(self, layout):
         status_layout = QHBoxLayout()
         self.status_label = QLabel("Ready to generate forest assets")
