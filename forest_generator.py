@@ -87,7 +87,7 @@ class ForestCreator(QtWidgets.QDialog):
 
     def create_rock(self):
         rock = cmds.polyCube(width=1.5, height=0.8, depth=1.2, sx=3, sy=2, sz=3,
-                             name="rock")
+                             name="rock")[0]
         cmds.select(rock + ".vtx[0:25]")
         cmds.polyMoveVertex(random=0.3)
         cmds.select(clear=True)
@@ -129,6 +129,5 @@ if __name__ == "__main__":
     tree = creator.create_tree()
     rock = creator.create_rock()
     mushroom = creator.create_mushroom()
-    user = creator.setup_ui()
-    window = creator.__init__()
+
 
