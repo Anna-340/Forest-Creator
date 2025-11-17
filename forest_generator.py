@@ -126,8 +126,5 @@ class ForestCreator(QtWidgets.QDialog):
 if __name__ == "__main__":
     creator = ForestCreator()
 
-    tree = creator.create_tree()
-    rock = creator.create_rock()
-    mushroom = creator.create_mushroom()
 
 
