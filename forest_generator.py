@@ -11,7 +11,7 @@ import maya.mel as mel
 import maya.OpenMaya as om
 
 
-class ForestCreator:
+class ForestCreator(QtWidgets.QDialog):
 
     # ui def
     # create window for user 
