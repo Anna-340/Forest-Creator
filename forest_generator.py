@@ -76,6 +76,8 @@ class ForestCreator(QtWidgets.QDialog):
         status_layout.addWidget(self.status_label)
         layout.addLayout(status_layout)
 
+    def create_asset_tab(self):
+
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
@@ -140,7 +142,12 @@ class ForestCreator(QtWidgets.QDialog):
             except Exception as err:
                 cmds.warning(f"Error clearing previous scatter: {str(err)}")
 
-                
+        for group in self.managed_groups[:]:
+            if cmds.objExists(group):
+                try:
+                    cmds.delete(group)
+                except:
+                    pass    
 
     def snap_to_ground(self, asset):
 
