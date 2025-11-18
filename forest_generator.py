@@ -41,6 +41,7 @@ class ForestCreator(QtWidgets.QDialog):
 
         self.generated_assets = {}
         self.scatter_objects = []
+        self.collision_spheres = []
 
         self.setup_ui()
         self.generate_base_assets()
@@ -124,6 +125,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.generated_assets = {}
 
     def check_collision(self, x, z, min_spacing):
+
 
 if __name__ == "__main__":
     creator = ForestCreator()
