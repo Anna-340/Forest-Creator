@@ -126,6 +126,14 @@ class ForestCreator(QtWidgets.QDialog):
 
     def check_collision(self, x, z, min_spacing):
 
+    def clear_previous_scatter(self):
+    
+    def snap_to_ground(self, asset):
+
+    def clear_scene_dialog(self):
+
+    def clear_scene(self):
+
 
 if __name__ == "__main__":
     creator = ForestCreator()
