@@ -127,7 +127,20 @@ class ForestCreator(QtWidgets.QDialog):
     def check_collision(self, x, z, min_spacing):
 
     def clear_previous_scatter(self):
-    
+        self.collision_spheres = []
+
+        if self.scatter_objects:
+            try:
+                existing_objects = [
+                    obj for obj in self.scatter_objects if cmds.objExists(obj)]
+                if existing_objects:
+                    cmds.delete(existing_objects)
+                self.scatter_objects = []
+            except Exception as err:
+                cmds.warning(f"Error clearing previous scatter: {str(err)}")
+
+                
+
     def snap_to_ground(self, asset):
 
     def clear_scene_dialog(self):
