@@ -123,6 +123,8 @@ class ForestCreator(QtWidgets.QDialog):
                     pass
         self.generated_assets = {}
 
+    def check_collision(self, x, z, min_spacing):
+
 if __name__ == "__main__":
     creator = ForestCreator()
 
