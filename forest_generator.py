@@ -42,6 +42,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.generated_assets = {}
         self.scatter_objects = []
         self.collision_spheres = []
+        self.managed_groups = []
 
         self.setup_ui()
         self.generate_base_assets()
