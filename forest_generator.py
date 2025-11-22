@@ -151,7 +151,8 @@ class ForestCreator(QtWidgets.QDialog):
                     pass    
 
     def snap_to_ground(self, asset):
-
+        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
+                          scale=True)
     def clear_scene_dialog(self):
 
     def clear_scene(self):
