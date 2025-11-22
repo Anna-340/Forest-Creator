@@ -153,6 +153,11 @@ class ForestCreator(QtWidgets.QDialog):
     def snap_to_ground(self, asset):
         cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
                           scale=True)
+        bbox = cmds.exactWorldBoundingBox(asset)
+        lowest_point = bbox[1]
+        move_amount = -lowest_point
+        cmds.move(move_amount, asset, moveY=True, relative=True)
+
     def clear_scene_dialog(self):
 
     def clear_scene(self):
