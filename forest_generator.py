@@ -127,7 +127,40 @@ class ForestCreator(QtWidgets.QDialog):
                     pass
         self.generated_assets = {}
 
+    def find_valid_pos(self, width, depth, center_x, 
+                       center_z, min_spacing, max_attempts):
+        
+    def get_distributed_pos(self, width, depth, center_x, center_z):
+        falloff_type = self.density_falloff.currentText()
+
+        if falloff_type == "Uniform":
+            x = random.uniform(center_x - width/2, center_x + width/2)
+            z = random.uniform(center_z - depth/2, center_z + depth/2)
+        elif falloff_type == "Center":
+            radius = min(width, depth) / 2
+            angle = random.uniform(0, 2 * math.pi)
+            dist = random.uniform(0, radius) * random.uniform(0, 1)
+            x = center_x + math.cos(angle) * dist
+            z = center_z + math.sin(angle) * dist
+        elif falloff_type == "Edges":
+            if random.choice([True, False]):
+                x = random.choice([center_x - width/2, center_x + width/2])
+                z = random.uniform([center_z - depth/2, center_z + depth/2])
+            else:
+                x = random.uniform([center_x - width/2, center_x + width/2])
+                z = random.choice([center_z - depth/2, center_z + depth/2])
+        else:
+            x = center_x + random.gauss(0, width/4)
+            z = center_z + random.gauss(0, depth/4)
+            x = max(center_x - width/2, min(center_x + width/2, x))
+            z = max(center_z - depth/2, min(center_z + depth/2, z))
+        return x, z
+    
     def check_collision(self, x, z, min_spacing):
+
+    def add_collision_sph(self, asset, position):
+
+    def apply_asset_trans(self, asset, position):
 
     def snap_to_ground(self, asset):
             cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
