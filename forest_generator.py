@@ -146,6 +146,7 @@ class ForestCreator(QtWidgets.QDialog):
             if cmds.objExists(group):
                 try:
                     cmds.delete(group)
+                    self.managed_groups.remove(group)
                 except:
                     pass    
 
