@@ -161,6 +161,9 @@ class ForestCreator(QtWidgets.QDialog):
     def clear_scene_dialog(self):
 
     def clear_scene(self):
+        try:
+            self.clear_previous_scatter()
+            
 
 
 if __name__ == "__main__":
