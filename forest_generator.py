@@ -157,8 +157,14 @@ class ForestCreator(QtWidgets.QDialog):
         return x, z
     
     def check_collision(self, x, z, min_spacing):
+        
 
     def add_collision_sph(self, asset, position):
+        bbox = cmds.exactWorldBoundingBox(asset)
+        width = bbox[3] - bbox[0]
+        depth = bbox[5] - bbox[2]
+        radius = max(width, depth) / 2
+        self.collision_spheres.append((position, radius))
 
     def apply_asset_trans(self, asset, position):
 
