@@ -129,6 +129,14 @@ class ForestCreator(QtWidgets.QDialog):
 
     def check_collision(self, x, z, min_spacing):
 
+    def snap_to_ground(self, asset):
+            cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
+                            scale=True)
+            bbox = cmds.exactWorldBoundingBox(asset)
+            lowest_point = bbox[1]
+            move_amount = -lowest_point
+            cmds.move(move_amount, asset, moveY=True, relative=True)
+
     def clear_previous_scatter(self):
         self.collision_spheres = []
 
@@ -149,14 +157,6 @@ class ForestCreator(QtWidgets.QDialog):
                     self.managed_groups.remove(group)
                 except:
                     pass    
-
-    def snap_to_ground(self, asset):
-        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
-                          scale=True)
-        bbox = cmds.exactWorldBoundingBox(asset)
-        lowest_point = bbox[1]
-        move_amount = -lowest_point
-        cmds.move(move_amount, asset, moveY=True, relative=True)
 
     def clear_scene_dialog(self):
         reply = QMessageBox.question(self, "Confirm Clear Scene",
