@@ -159,6 +159,14 @@ class ForestCreator(QtWidgets.QDialog):
         cmds.move(move_amount, asset, moveY=True, relative=True)
 
     def clear_scene_dialog(self):
+        reply = QMessageBox.question(self, "Confirm Clear Scene",
+        "Are you sure you want to clear the forest? You can't undo this.",
+        QMessageBox.Yes | QMessageBox.No,
+        QMessageBox.No
+        )
+        if reply == QMessageBox.No:
+            return
+        self.clear_scene()
 
     def clear_scene(self):
         try:
@@ -169,7 +177,7 @@ class ForestCreator(QtWidgets.QDialog):
                         cmds.delete(asset)
                     except:
                         pass
-                    
+
             self.generate_base_assets()
             forest_objects = cmds.ls("Forest_*", "tree_*", "rock_*", "mushroom_*")
             for obj in forest_objects:  
