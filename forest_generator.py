@@ -92,7 +92,80 @@ class ForestCreator(QtWidgets.QDialog):
         status_layout.addWidget(self.status_label)
         layout.addLayout(status_layout)
 
-    def create_asset_tab(self):
+    def create_asset_tab(self)
+        pass
+
+    def create_tree_controls(self):
+        pass
+
+    def create_rock_controls(self):
+        pass
+
+    def create_mushroom_controls(self):
+        pass
+
+    def create_scatter_tab(self):
+        pass
+
+    def create_collision_controls(self):
+        pass
+
+    def create_scale_controls(self):
+        pass
+
+    def create_coloring_tab(self):
+        pass
+
+    def create_tree_color_controls(self):
+        pass
+
+    def create_rock_color_controls(self):
+        pass
+
+    def create_mushroom_color_controls(self):
+        pass
+
+    def create_global_color_controls(self):
+        pass
+
+    def create_color_btn(self):
+        pass
+
+    def choose_color(self):
+        pass
+
+    def get_current_color(self):
+        pass
+
+    def set_color_btn(self):
+        pass
+
+    def get_btn_color(self):
+        pass
+
+    def apply_tree_colors(self):
+        pass
+
+    def color_tree(self):
+        pass
+
+    def apply_rock_colors(self):
+        pass
+
+    def apply_mushroom_color(self):
+        pass
+
+    def color_mushroom(self):
+        pass
+
+    def apply_all_colors(self):
+        pass
+
+    def randomize_all_colors(self):
+        pass
+    
+    def appply_color_to_obj(self):
+        pass
 
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
@@ -125,6 +198,9 @@ class ForestCreator(QtWidgets.QDialog):
         mushroom_group = cmds.group([stem, cap], name="full_mushroom")
         return mushroom_group
     
+    def generate_forest(self):
+        pass
+
     def generate_base_assets(self):
         self.status_label.setText("Generating base assets...")
         self.clean_base_assets()
