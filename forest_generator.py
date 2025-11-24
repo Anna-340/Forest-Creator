@@ -96,13 +96,62 @@ class ForestCreator(QtWidgets.QDialog):
         pass
 
     def create_tree_controls(self):
-        pass
+        group = QgroupBox("Trees")
+        layout = QGridLayout(group)
+        self.tree_enabled = QCheckBox("Generate Trees")
+        self.tree_enabled.setChecked(True)
+        layout.addWidget(self.tree_enabled, 0, 0, 1, 2)
+        
+        layout.addWidget(Qlabel("Tree Count:"), 1, 0)
+        self.tree_count = QSpinBox()
+        self.tree_count.setRange(1, 100)
+        self.tree_count.setValue(15)
+        layout.addWidget(self.tree_count, 1, 1)
+
+        layout.addWidget(QLabel("Height Variation:"), 2, 0)
+        self.tree_height_var = QDoubleSpinBox()
+        self.tree_height_var.setRange(0.0, 1.0)
+        self.tree_height_var.setValue(0.4)
+        self.tree_height_var.setSingleStep(0.1)
+        layout.addWidget(self.tree_height_var, 2, 1)
+
+        return group
 
     def create_rock_controls(self):
-        pass
+        group = QgroupBox("Rocks")
+        layout = QGridLayout(group)
+        self.rock_enabled = QCheckBox("Generate Rocks")
+        self.rock_enabled.setChecked(True)
+        layout.addWidget(self.rock_enabled, 0, 0, 1, 2)
+        
+        layout.addWidget(Qlabel("Rock Count:"), 1, 0)
+        self.rock_count = QSpinBox()
+        self.rock_count.setRange(1, 50)
+        self.rock_count.setValue(10)
+        layout.addWidget(self.rock_count, 1, 1)
+
+        layout.addWidget(QLabel("Height Variation:"), 2, 0)
+        self.rock_size_var = QDoubleSpinBox()
+        self.rock_size_var.setRange(0.0, 2.0)
+        self.rock_size_var.setValue(0.5)
+        layout.addWidget(self.rock_size_var, 2, 1)
+
+        return group
 
     def create_mushroom_controls(self):
-        pass
+        group = QgroupBox("Mushrooms")
+        layout = QGridLayout(group)
+        self.mushroom_enabled = QCheckBox("Generate Mushrooms")
+        self.mushroom_enabled.setChecked(True)
+        layout.addWidget(self.mushroom_enabled, 0, 0, 1, 2)
+        
+        layout.addWidget(Qlabel("Mushroom Count:"), 1, 0)
+        self.mushroom_count = QSpinBox()
+        self.mushroom_count.setRange(1, 30)
+        self.mushroom_count.setValue(8)
+        layout.addWidget(self.mushroom_count, 1, 1)
+
+        return group
 
     def create_scatter_tab(self):
         pass
