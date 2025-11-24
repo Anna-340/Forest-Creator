@@ -69,6 +69,9 @@ class ForestCreator(QtWidgets.QDialog):
         
         self.status_bar(main_layout)
         
+    def add_action_btns(self, layout):
+        
+
     def status_bar(self, layout):
         status_layout = QHBoxLayout()
         self.status_label = QLabel("Ready to generate forest assets")
