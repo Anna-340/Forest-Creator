@@ -75,7 +75,7 @@ class ForestCreator(QtWidgets.QDialog):
         generate_btn = QPushButton("Create Forest!")
         generate_btn.setStyleSheet("QPushButton { background-color: #8b4513; " \
         "color: white; padding: 8px; }")
-        generate_btn.clicked.connect(self).#generateforest def)
+        generate_btn.clicked.connect(self.generate_forest)
         action_layout.addWidget(generate_btn)
 
         clear_btn = QPushButton("Clear Scene")
@@ -111,8 +111,26 @@ class ForestCreator(QtWidgets.QDialog):
         pass
 
     def create_scale_controls(self):
-        pass
+        group = QGroupBox("Scale & Rotation Variation")
+        layout = QGridLayout(group)
+        layout.addWidget(QLabel("Global Scale Min:"), 0, 0)
+        self.scale_min = QDoubleSpinBox()
+        self.scale_min.setRange(0.1, 2.0)
+        self.scale_min.setValue(0.7)
+        layout.addWidget(self.scale_min, 0, 1)
 
+        layout.addWidget(OLabel("Global Scale Max:"), 1, 0)
+        self.scale_max = QDoubleSpinBox()
+        self.scale_max.setRange(0.1, 3.0)
+        self.scale_max.setValue(1.3)
+        layout.addWidget(self.scale_max, 1, 1)
+
+        self.random_rotation = QCheckBox("Random Rotation")
+        self.random_rotation.setChecked(True)
+        layout.addWidget(self.random_rotation, 2, 0, 1, 2)
+
+        return group
+    
     def create_coloring_tab(self):
         pass
 
@@ -264,7 +282,13 @@ class ForestCreator(QtWidgets.QDialog):
         radius = max(width, depth) / 2
         self.collision_spheres.append((position, radius))
 
-    def apply_asset_trans(self, asset, position):
+    def apply_asset_trans(self, asset, position, asset_type):
+        x, y, z = position
+        cmds.move(x, y, z, asset)
+        scale = random.uniform(self.scale_min.value(), self.scale_max.value())
+
+        if asset_type == 'tree':
+            
 
     def snap_to_ground(self, asset):
             cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
@@ -328,10 +352,23 @@ class ForestCreator(QtWidgets.QDialog):
             self.status_label.setText(f"Error clearing scene: {str(e)}")
             cmds.warning(f"Scene clearing error: {str(e)}")
 
+    def finalize_scene(self):
+        cmds.refresh()
+
+def show_forest_dresser():
+    global forest_dresser_window
+
+    try:
+        forest_dresser_window.close()
+    except:
+        pass
+
+    forest_dresser_window = ForestCreator()
+    forest_dresser_window.show()
 
 
 if __name__ == "__main__":
-    creator = ForestCreator()
+    show_forest_dresser()
 
 
 
