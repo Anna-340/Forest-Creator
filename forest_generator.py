@@ -158,7 +158,12 @@ class ForestCreator(QtWidgets.QDialog):
     
     def check_collision(self, x, z, min_spacing):
         for sphere in self.collision_spheres:
-            
+            pos, radius = sphere
+            distance = math.sqrt((x - pos[0])**2 + (z -pos[2])**2)
+            if distance < (radius + min_spacing) * self.collision_multiplier.value():
+                return True
+            return False
+
 
     def add_collision_sph(self, asset, position):
         bbox = cmds.exactWorldBoundingBox(asset)
