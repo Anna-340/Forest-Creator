@@ -352,7 +352,10 @@ class ForestCreator(QtWidgets.QDialog):
                        center_z, min_spacing, max_attempts):
         for attempt in range(max_attempts):
             x, z = self.get_distributed_pos(width, depth, center_x, center_z)
-            if not self
+            if not self.collision_enabled.isChecked() or not self.check_collision(
+                x, z, min_spacing):
+                return (x, 0, z)
+        return None
 
         
     def get_distributed_pos(self, width, depth, center_x, center_z):
