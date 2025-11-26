@@ -173,7 +173,9 @@ class ForestCreator(QtWidgets.QDialog):
         pass
 
     def create_collision_controls(self):
-        pass
+        group = QGroupBox("Collision Avoidance")
+        layout = QGridLayout(group)
+        
 
     def create_scale_controls(self):
         group = QGroupBox("Scale & Rotation Variation")
