@@ -176,6 +176,17 @@ class ForestCreator(QtWidgets.QDialog):
         group = QGroupBox("Collision Avoidance")
         layout = QGridLayout(group)
 
+        self.collision_enabled = QCheckBox("Enable Collision Detection")
+        self.collision_enabled.setChecked(True)
+        layout.addWidget(self.collision_enabled, 0, 0, 1, 2)
+        layout.addWidget(QLabel("Collision Radius Multiplier:"), 1, 0)
+        self.collision_multiplier = QDoubleSpinBox()
+        self.collision_multiplier.setRange(0.5, 3.0)
+        self.collision_multiplier.setValue(1.2)
+        layout.addWidget(self.collision_multiplier, 1, 1)
+
+        return group
+
 
     def create_scale_controls(self):
         group = QGroupBox("Scale & Rotation Variation")
