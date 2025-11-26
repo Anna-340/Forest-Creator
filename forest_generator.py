@@ -170,7 +170,16 @@ class ForestCreator(QtWidgets.QDialog):
         return group
 
     def create_scatter_tab(self):
-        pass
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(15)
+
+        dist_group = QGroupBox("Distribution Settings")
+        dist_layout = QGridLayout(dist_group)
+
+        dist_layout.addWidget(QLabel("Min Spacing:"), 0, 0)
+        self.min_spacing = QDoubleSpinBox()
+        
 
     def create_collision_controls(self):
         group = QGroupBox("Collision Avoidance")
