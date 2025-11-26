@@ -92,8 +92,24 @@ class ForestCreator(QtWidgets.QDialog):
         status_layout.addWidget(self.status_label)
         layout.addLayout(status_layout)
 
-    def create_asset_tab(self)
-        pass
+    def create_asset_tab(self):
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(15)
+        controls_group = QGroupBox("Asset Generation Controls")
+        controls_layout = QGridLayout(controls_group)
+
+        tree_group = self.create_tree_controls()
+        rock_group = self.create_rock_controls()
+        mushroom_group = self.create_mushroom_controls()
+        controls_layout.addWidget(tree_group, 0, 0)
+        controls_layout.addWidget(rock_group, 0, 1)
+        controls_layout.addWidget(mushroom_group, 1, 0)
+
+        layout.addWidget(controls_group)
+        layout.addStretch()
+        return tab
+        
 
     def create_tree_controls(self):
         group = QgroupBox("Trees")
@@ -289,8 +305,9 @@ class ForestCreator(QtWidgets.QDialog):
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
         for attempt in range(max_attempts):
-            x, z = self.get_distributed_pos(width, depth, center_x, center_z=)
-            
+            x, z = self.get_distributed_pos(width, depth, center_x, center_z)
+            if not self
+
         
     def get_distributed_pos(self, width, depth, center_x, center_z):
         falloff_type = self.density_falloff.currentText()
