@@ -175,7 +175,7 @@ class ForestCreator(QtWidgets.QDialog):
     def create_collision_controls(self):
         group = QGroupBox("Collision Avoidance")
         layout = QGridLayout(group)
-        
+
 
     def create_scale_controls(self):
         group = QGroupBox("Scale & Rotation Variation")
@@ -362,12 +362,12 @@ class ForestCreator(QtWidgets.QDialog):
             
 
     def snap_to_ground(self, asset):
-            cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
+        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
                             scale=True)
-            bbox = cmds.exactWorldBoundingBox(asset)
-            lowest_point = bbox[1]
-            move_amount = -lowest_point
-            cmds.move(move_amount, asset, moveY=True, relative=True)
+        bbox = cmds.exactWorldBoundingBox(asset)
+        lowest_point = bbox[1]
+        move_amount = -lowest_point
+        cmds.move(move_amount, asset, moveY=True, relative=True)
 
     def clear_previous_scatter(self):
         self.collision_spheres = []
