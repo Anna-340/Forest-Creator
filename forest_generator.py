@@ -179,7 +179,11 @@ class ForestCreator(QtWidgets.QDialog):
 
         dist_layout.addWidget(QLabel("Min Spacing:"), 0, 0)
         self.min_spacing = QDoubleSpinBox()
+        self.min_spacing.setRange(0.1, 10.0)
+        self.min_spacing.setSuffix(" units")
+        dist_layout.addWidget(self.min_spacing, 0, 1)
         
+
 
     def create_collision_controls(self):
         group = QGroupBox("Collision Avoidance")
