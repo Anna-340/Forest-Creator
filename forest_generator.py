@@ -182,7 +182,27 @@ class ForestCreator(QtWidgets.QDialog):
         self.min_spacing.setRange(0.1, 10.0)
         self.min_spacing.setSuffix(" units")
         dist_layout.addWidget(self.min_spacing, 0, 1)
-        
+
+        dist_layout.addWidget(QLabel("Placement Attempts:"), 1, 0)
+        self.placement_attempts = QSpinBox()
+        self.placement_attempts.setRange(1, 200)
+        self.placement_attempts.setValue(50)
+        dist_layout.addWidget(self.placement_attempts, 1, 1)
+
+        dist_layout.addWidget(QLabel("Density Falloff:"), 2, 0)
+        self.density_falloff = QComboBox()
+        self.density_falloff.addItems(["Uniform", "Center", "Edges", "Random"])
+        dist_layout.addWidget(self.density_falloff, 2, 1)
+        layout.addWidget(dist_group)
+
+        collision_group = self.create_collision_controls()
+        layout.addWidget(collision_group)
+        scale_group = self.create_scale_controls()
+        layout.addWidget(scale_group)
+        layout.addStretch()
+
+        return tab
+
 
 
     def create_collision_controls(self):
