@@ -288,6 +288,9 @@ class ForestCreator(QtWidgets.QDialog):
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
+        for attempt in range(max_attempts):
+            x, z = self.get_distributed_pos(width, depth, center_x, center_z=)
+            
         
     def get_distributed_pos(self, width, depth, center_x, center_z):
         falloff_type = self.density_falloff.currentText()
