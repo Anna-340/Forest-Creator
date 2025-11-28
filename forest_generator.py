@@ -255,7 +255,11 @@ class ForestCreator(QtWidgets.QDialog):
         self.tree_leaves_color_btn = self.create_color_btn("#0E912A", "tree_leaves")
         layout.addWidget(self.tree_leaves_color_btn, 0, 1)
 
-        apply_btn =
+        apply_btn = QPushButton("Apply Tree Colors")
+        apply_btn.clicked.connect(self.apply_tree_colors)
+        layout.addWidget(apply_btn, 2, 0, 1, 2)
+        
+        return group
 
 
     def create_rock_color_controls(self):
