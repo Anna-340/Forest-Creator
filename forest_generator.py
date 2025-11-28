@@ -246,6 +246,10 @@ class ForestCreator(QtWidgets.QDialog):
         tab = QWidget()
         layout = QVBoxLayout(tab)
         layout.setSpacing(15)
+        tree_group = self.create_tree_color_controls()
+        rock_group = self.create_rock_color_controls()
+        mushroom_group = self.create_mushroom_color_controls()
+        global_group = self.create_global_color_controls()
 
     def create_tree_color_controls(self):
         pass
