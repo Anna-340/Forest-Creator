@@ -263,7 +263,18 @@ class ForestCreator(QtWidgets.QDialog):
 
 
     def create_rock_color_controls(self):
-        pass
+        group = QgroupBox("Rock Coloring")
+        layout = QGridLayout(group)
+
+        layout.addWidget(QLabel("Rock Base Color:"), 0, 0)
+        self.rock_color_btn = self.create_color_btn("#696969", "rock")
+        layout.addWidget(self.rock_color_btn, 0, 1)
+
+        apply_btn = QPushButton("Apply Rock Colors")
+        apply_btn.clicked.connect(self.apply_rock_colors)
+        layout.addWidget(apply_btn, 1, 0, 1, 2)
+
+        return group
 
     def create_mushroom_color_controls(self):
         pass
