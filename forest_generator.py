@@ -311,8 +311,12 @@ class ForestCreator(QtWidgets.QDialog):
 
         return group
 
-    def create_color_btn(self):
-        pass
+    def create_color_btn(self, default_color, color_type):
+        button = QPushButton()
+        button.setStyleSheet(f"background-color {default_color}; border: 1px solid #666;")
+        button.setFixedSize(60, 25)
+        button.clicked.connect(lambda: self.choose_color(color_type))
+        return button
 
     def choose_color(self):
         pass
