@@ -247,7 +247,9 @@ class ForestCreator(QtWidgets.QDialog):
         group = QGroupBox("Trees Coloring")
         layout = QGridLayout(group)
 
-        layout.addWidget(QLabel("Tree Trunk Color:"))
+        layout.addWidget(QLabel("Tree Trunk Color:"), 0, 0)
+        self.tree_trunk_color_btn = self.create_color_btn("#8B4513", "tree_trunk")
+        layout.addWidget(self.tree_trunk_color_btn, 0, 1)
 
 
     def create_rock_color_controls(self):
