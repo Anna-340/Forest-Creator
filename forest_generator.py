@@ -318,8 +318,12 @@ class ForestCreator(QtWidgets.QDialog):
         button.clicked.connect(lambda: self.choose_color(color_type))
         return button
 
-    def choose_color(self):
-        pass
+    def choose_color(self, color_type):
+        current_color = self.get_current_color(color_type)
+        color = QColorDialog.getColor(current_color, self, 
+                    f"Choose {color_type.replace('_', ' ').title()} Color")
+        if color.isValid():
+            self.set_color_btn(color_type, color)
 
     def get_current_color(self):
         pass
