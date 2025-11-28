@@ -243,7 +243,9 @@ class ForestCreator(QtWidgets.QDialog):
         return group
     
     def create_coloring_tab(self):
-        pass
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(15)
 
     def create_tree_color_controls(self):
         pass
