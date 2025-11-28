@@ -251,6 +251,13 @@ class ForestCreator(QtWidgets.QDialog):
         mushroom_group = self.create_mushroom_color_controls()
         global_group = self.create_global_color_controls()
 
+        layout.addWidget(tree_group)
+        layout.addWidget(rock_group)
+        layout.addWidget(mushroom_group)
+        layout.addWidget(global_group)
+        layout.addStretch()
+        return tab
+
     def create_tree_color_controls(self):
         pass
 
