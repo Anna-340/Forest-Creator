@@ -295,9 +295,21 @@ class ForestCreator(QtWidgets.QDialog):
         return group
 
 
-
     def create_global_color_controls(self):
-        pass
+        group = QGroupBox("Global Color Controls")
+        layout = QVBoxLayout(group)
+
+        apply_all_btn = QPushButton("Apply All Colors to Forest Assets")
+        apply_all_btn.setStyleSheet("QPushButton { background-color: #4CAF50; color: white; font-weight: bold; padding: 8px; }")
+        apply_all_btn.clicked.connect(self.apply_all_colors)
+        layout.addWidget(apply_all_btn)
+
+        randomize_btn = QPushButton("Randomize All Colors")
+        randomize_btn.setStyleSheet("QPushButton { background-color: #9C27B0; color: white; padding: 8px; }")
+        randomize_btn.clicked.connect(self.randomize_all_colors)
+        layout.addWidget(randomize_btn)
+
+        return group
 
     def create_color_btn(self):
         pass
