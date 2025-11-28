@@ -244,7 +244,7 @@ class ForestCreator(QtWidgets.QDialog):
         return tab
 
     def create_tree_color_controls(self):
-        group = QGroupBox("Trees Coloring")
+        group = QGroupBox("Tree Coloring")
         layout = QGridLayout(group)
 
         layout.addWidget(QLabel("Tree Trunk Color:"), 0, 0)
@@ -271,13 +271,30 @@ class ForestCreator(QtWidgets.QDialog):
         layout.addWidget(self.rock_color_btn, 0, 1)
 
         apply_btn = QPushButton("Apply Rock Colors")
-        apply_btn.clicked.connect(self.apply_rock_colors)
+        apply_btn.clicked.connect(self.apply_rock_color)
         layout.addWidget(apply_btn, 1, 0, 1, 2)
 
         return group
 
     def create_mushroom_color_controls(self):
-        pass
+        group = QGroupBox("Mushroom Coloring:")
+        layout = QGridLayout(group)
+
+        layout.addWidget(QLabel("Mushroom Stem Color:"), 0, 0)
+        self.mushroom_stem_color_btn = self.create_color_btn("#F5F5CD", "mushroom_stem")
+        layout.addWidget(self.mushroom_stem_color_btn, 0, 1)
+
+        layout.addWidget(QLabel("Mushroom Cap Color:"), 1, 0)
+        self.mushroom_cap_color_btn = self.create_color_btn("#FF6B6B", "mushroom_cap")
+        layout.addWidget(self.mushroom_cap_color_btn, 1, 1)
+
+        apply_btn = QPushButton("Apply Mushroom Colors")
+        apply_btn.clicked.connect(self.apply_mushroom_colors)
+        layout.addWidget(apply_btn, 2, 0, 1, 2)
+
+        return group
+
+
 
     def create_global_color_controls(self):
         pass
@@ -303,10 +320,10 @@ class ForestCreator(QtWidgets.QDialog):
     def color_tree(self):
         pass
 
-    def apply_rock_colors(self):
+    def apply_rock_color(self):
         pass
 
-    def apply_mushroom_color(self):
+    def apply_mushroom_colors(self):
         pass
 
     def color_mushroom(self):
