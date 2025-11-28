@@ -244,7 +244,11 @@ class ForestCreator(QtWidgets.QDialog):
         return tab
 
     def create_tree_color_controls(self):
-        pass
+        group = QGroupBox("Trees Coloring")
+        layout = QGridLayout(group)
+
+        layout.addWidget(QLabel("Tree Trunk Color:"))
+
 
     def create_rock_color_controls(self):
         pass
@@ -291,7 +295,7 @@ class ForestCreator(QtWidgets.QDialog):
     def randomize_all_colors(self):
         pass
     
-    def appply_color_to_obj(self):
+    def apply_color_to_obj(self):
         pass
 
     def create_tree(self):
