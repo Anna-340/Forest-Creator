@@ -442,6 +442,15 @@ class ForestCreator(QtWidgets.QDialog):
         green = color.green() / 255.0
         blue = color.blue() / 255.0
 
+        shader_name = f"{obj}_shader"
+        if not cmds.objExists(shader_name):
+            shader = cmds.shadingNode('lambert', asShader=True, name=shader_name)
+            shading_group = cmds.sets(renderable=True, noSurfaceShader=True, 
+                                      empty=True, name=f"{shader_name}SGH")
+            cmds.connectAttr(f'{shader}.outColor', f'{shading_group}.surfaceShader')
+        else:
+            shader = shader_name
+
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
