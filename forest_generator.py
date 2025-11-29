@@ -455,6 +455,24 @@ class ForestCreator(QtWidgets.QDialog):
         cmds.select(obj)
         cmds.hyperShade(assign=shader)
 
+    def generate_base_assets(self):
+        self.status_label.setText("Generating base assets...")
+        self.clean_base_assets()
+
+        self.generated_assets['tree'] = self.create_tree()
+        self.generated_assets['rock'] = self.create_rock()
+        self.generated_assets['mushroom'] = self.create_mushroom()
+        self.status_label.setText("Base assets generated!")
+
+    def clean_base_assets(self):
+        for asset_name, asset in list(self.generated_assets.items()):
+            if cmds.objExists(asset):
+                try:
+                    cmds.delete(asset)
+                except:
+                    pass
+        self.generated_assets = {}
+
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
@@ -488,24 +506,6 @@ class ForestCreator(QtWidgets.QDialog):
     
     def generate_forest(self):
         pass
-
-    def generate_base_assets(self):
-        self.status_label.setText("Generating base assets...")
-        self.clean_base_assets()
-
-        self.generated_assets['tree'] = self.create_tree()
-        self.generated_assets['rock'] = self.create_rock()
-        self.generated_assets['mushroom'] = self.create_mushroom()
-        self.status_label.setText("Base assets generated!")
-
-    def clean_base_assets(self):
-        for asset_name, asset in list(self.generated_assets.items()):
-            if cmds.objExists(asset):
-                try:
-                    cmds.delete(asset)
-                except:
-                    pass
-        self.generated_assets = {}
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
