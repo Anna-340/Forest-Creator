@@ -257,7 +257,7 @@ class ForestCreator(QtWidgets.QDialog):
                                                           "tree_trunk")
         layout.addWidget(self.tree_trunk_color_btn, 0, 1)
 
-        layout.addWidget(QLabel("Tree Leaves Color:"), 0, 0)
+        layout.addWidget(QLabel("Tree Leaves Color:"), 1, 0)
         self.tree_leaves_color_btn = self.create_color_btn("#0E912A", 
                                                            "tree_leaves")
         layout.addWidget(self.tree_leaves_color_btn, 0, 1)
