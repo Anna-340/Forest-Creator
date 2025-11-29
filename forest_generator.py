@@ -259,11 +259,13 @@ class ForestCreator(QtWidgets.QDialog):
         layout = QGridLayout(group)
 
         layout.addWidget(QLabel("Tree Trunk Color:"), 0, 0)
-        self.tree_trunk_color_btn = self.create_color_btn("#8B4513", "tree_trunk")
+        self.tree_trunk_color_btn = self.create_color_btn("#8B4513", 
+                                                          "tree_trunk")
         layout.addWidget(self.tree_trunk_color_btn, 0, 1)
 
         layout.addWidget(QLabel("Tree Leaves Color:"), 0, 0)
-        self.tree_leaves_color_btn = self.create_color_btn("#0E912A", "tree_leaves")
+        self.tree_leaves_color_btn = self.create_color_btn("#0E912A", 
+                                                           "tree_leaves")
         layout.addWidget(self.tree_leaves_color_btn, 0, 1)
 
         apply_btn = QPushButton("Apply Tree Colors")
@@ -292,11 +294,13 @@ class ForestCreator(QtWidgets.QDialog):
         layout = QGridLayout(group)
 
         layout.addWidget(QLabel("Mushroom Stem Color:"), 0, 0)
-        self.mushroom_stem_color_btn = self.create_color_btn("#F5F5CD", "mushroom_stem")
+        self.mushroom_stem_color_btn = self.create_color_btn("#F5F5CD", 
+                                                             "mushroom_stem")
         layout.addWidget(self.mushroom_stem_color_btn, 0, 1)
 
         layout.addWidget(QLabel("Mushroom Cap Color:"), 1, 0)
-        self.mushroom_cap_color_btn = self.create_color_btn("#FF6B6B", "mushroom_cap")
+        self.mushroom_cap_color_btn = self.create_color_btn("#FF6B6B", 
+                                                            "mushroom_cap")
         layout.addWidget(self.mushroom_cap_color_btn, 1, 1)
 
         apply_btn = QPushButton("Apply Mushroom Colors")
@@ -311,12 +315,14 @@ class ForestCreator(QtWidgets.QDialog):
         layout = QVBoxLayout(group)
 
         apply_all_btn = QPushButton("Apply All Colors to Forest Assets")
-        apply_all_btn.setStyleSheet("QPushButton { background-color: #4CAF50; color: white; font-weight: bold; padding: 8px; }")
+        apply_all_btn.setStyleSheet("QPushButton { background-color: #4CAF50; " \
+        "color: white; font-weight: bold; padding: 8px; }")
         apply_all_btn.clicked.connect(self.apply_all_colors)
         layout.addWidget(apply_all_btn)
 
         randomize_btn = QPushButton("Randomize All Colors")
-        randomize_btn.setStyleSheet("QPushButton { background-color: #9C27B0; color: white; padding: 8px; }")
+        randomize_btn.setStyleSheet("QPushButton { background-color: #9C27B0; " \
+        "color: white; padding: 8px; }")
         randomize_btn.clicked.connect(self.randomize_all_colors)
         layout.addWidget(randomize_btn)
 
@@ -324,7 +330,8 @@ class ForestCreator(QtWidgets.QDialog):
 
     def create_color_btn(self, default_color, color_type):
         button = QPushButton()
-        button.setStyleSheet(f"background-color {default_color}; border: 1px solid #666;")
+        button.setStyleSheet(f"background-color {default_color}; 
+                             border: 1px solid #666;")
         button.setFixedSize(60, 25)
         button.clicked.connect(lambda: self.choose_color(color_type))
         return button
@@ -400,8 +407,8 @@ class ForestCreator(QtWidgets.QDialog):
         return tree_group
 
     def create_rock(self):
-        rock = cmds.polyCube(width=1.5, height=0.8, depth=1.2, sx=3, sy=2, sz=3,
-                             name="rock")[0]
+        rock = cmds.polyCube(width=1.5, height=0.8, depth=1.2, sx=3, sy=2, 
+                             sz=3, name="rock")[0]
         cmds.select(rock + ".vtx[0:25]")
         cmds.polyMoveVertex(random=0.3)
         cmds.select(clear=True)
