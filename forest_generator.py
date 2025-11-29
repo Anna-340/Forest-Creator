@@ -550,7 +550,9 @@ class ForestCreator(QtWidgets.QDialog):
                         f"Placing {asset_type}s... ({ast}/{total_assets})")
                     QtCore.QCoreApplication.processEvents()
 
-                    position = self.find_valid_pos(area_width, area_depth, center_x, center_z, self.min_spacing.value(), self.placement_attempts.value())
+                position = self.find_valid_pos(area_width, area_depth, 
+                center_x, center_z, self.min_spacing.value(), 
+                self.placement_attempts.value())
                 
                 if position:
                     base_asset = self.generated_assets[asset_type]
