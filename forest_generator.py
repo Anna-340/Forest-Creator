@@ -514,6 +514,15 @@ class ForestCreator(QtWidgets.QDialog):
                     break
                 cmds.showHidden(asset)
 
+            assets_to_scatter = []
+            if self.tree_enabled.isChecked():
+                assets_to_scatter.extend(['tree'] * self.tree_count.value())
+            if self.rock_enabled.isChecked():
+                assets_to_scatter.extend(['rock'] * self.rock_count.value())
+            if self.mushroom_enabled.isChecked():
+                assets_to_scatter.extend(
+                    ['mushroom'] * self.mushroom_count.value())
+
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
         for attempt in range(max_attempts):
