@@ -563,6 +563,24 @@ class ForestCreator(QtWidgets.QDialog):
                     self.apply_asset_trans(new_asset, position, asset_type)
 
                     if self.collision_enabled.isChecked():
+                        self.add_collision_sph(new_asset, position)
+
+                    cmds.parent(new_asset, asset_groups[asset_type])
+                    self.scatter_objects.append(new_asset)
+                    placed_count += 1
+
+            for asset in self.generated_assets.values():
+                if cmds.objExists(asset):
+                    cmds.hide(asset)
+            
+            self.apply_all_colors()
+            self.finalize_scene()
+            self.status_label.setText(
+            f"Forest generation complete!!! Placed {placed_count} assets! :D")
+        
+        except Exception as e:
+            self.status_label.setText(f"Error during generation: {str(e)}")
+            cmds.warning(f"Forest generation error: {str(e)}")
 
 
     def find_valid_pos(self, width, depth, center_x, 
