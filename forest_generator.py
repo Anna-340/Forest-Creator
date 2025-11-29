@@ -75,7 +75,9 @@ class ForestCreator(QtWidgets.QDialog):
         action_layout.addWidget(generate_btn)
 
         clear_btn = QPushButton("Clear Scene")
-        clear_btn.setStyleSheet("QPushButton { backgound-color: #8B4513; color: white; padding: 8px;}")
+        clear_btn.setStyleSheet(
+            "QPushButton { backgound-color: #8B4513; color: " \
+            "white; padding: 8px;}")
         clear_btn.clicked.connect(self.clear_scene_dialog)
         action_layout.addWidget(clear_btn)
 
@@ -84,7 +86,8 @@ class ForestCreator(QtWidgets.QDialog):
     def status_bar(self, layout):
         status_layout = QHBoxLayout()
         self.status_label = QLabel("Ready to generate forest assets")
-        self.status_label.setStyleSheet("padding: 5px; background-color: #F5F5F5; border: 1px solid #DDD;")
+        self.status_label.setStyleSheet(
+            "padding: 5px; background-color: #F5F5F5; border: 1px solid #DDD;")
         status_layout.addWidget(self.status_label)
         layout.addLayout(status_layout)
 
