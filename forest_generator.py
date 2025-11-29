@@ -526,7 +526,7 @@ class ForestCreator(QtWidgets.QDialog):
             random.shuffle(assets_to_scatter)
 
             area_width = 20.0
-            aread_depth = 20.0
+            area_depth = 20.0
             center_x = 0.0
             center_z = 0.0
 
@@ -550,9 +550,7 @@ class ForestCreator(QtWidgets.QDialog):
                         f"Placing {asset_type}s... ({ast}/{total_assets})")
                     QtCore.QCoreApplication.processEvents()
 
-                    position = self.find_valid_pos(area_width, 
-                    aread_depth, center_x, center_z, self.min_spacing.value(), 
-                    self.placement_attempts.value())
+                    position = self.find_valid_pos(area_width, area_depth, center_x, center_z, self.min_spacing.value(), self.placement_attempts.value())
                 
                 if position:
                     base_asset = self.generated_assets[asset_type]
