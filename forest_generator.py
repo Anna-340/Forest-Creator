@@ -522,6 +522,27 @@ class ForestCreator(QtWidgets.QDialog):
             if self.mushroom_enabled.isChecked():
                 assets_to_scatter.extend(
                     ['mushroom'] * self.mushroom_count.value())
+                
+            random.shuffle(assets_to_scatter)
+
+            area_width = 20.0
+            aread_depth = 20.0
+            center_x = 0.0
+            center_z = 0.0
+
+            forest_group = cmds.group(empty=True, name="Forest_Scatter")
+            self.managed_groups.append(forest_group)
+
+            asset_groups = {}
+            for asset_type in ['tree', 'rock', 'mushroom']:
+                group_name = f"Forest_{asset_type.capitalize()}s"
+                asset_groups[asset_type] = cmds.group(empty=True, 
+                                                      name=group_name)
+                cmds.parent(asset_groups[asset_type], forest_group)
+                self.managed_groups.append(asset_groups[asset_type])
+
+            total_assets = len(assets_to_scatter)
+            placed_count = 0
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
