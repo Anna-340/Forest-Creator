@@ -351,7 +351,7 @@ class ForestCreator(QtWidgets.QDialog):
                      'rock': '#696969', 'mushroom_stem': '#F5F5CD',
                      'mushroom_cap': '#FF6B6B'
                      }
-        return Qcolor(color_map.get(color_type, '#FFFFFF'))
+        return QColor(color_map.get(color_type, '#FFFFFF'))
 
     def set_color_btn(self, color_type, color):
         button_map = {'tree_trunk': self.tree_trunk_color_btn,
@@ -368,7 +368,6 @@ class ForestCreator(QtWidgets.QDialog):
     def get_btn_color(self, button):
         style = button.styleSheet()
         match = re.search(r'background-color:\s*([^;]+);', style)
-        import re
         if match:
             color_str = match.group(1)
             return QColor(color_str)
