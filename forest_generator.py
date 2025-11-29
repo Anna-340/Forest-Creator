@@ -655,12 +655,17 @@ class ForestCreator(QtWidgets.QDialog):
             x = center_x + math.cos(angle) * dist
             z = center_z + math.sin(angle) * dist
         elif falloff_type == "Edges":
+            edge_buffer = 2.0
             if random.choice([True, False]):
-                x = random.choice([center_x - width/2, center_x + width/2])
-                z = random.uniform(center_z - depth/2, center_z + depth/2)
+                edge_choice = random.choice([-1, 1])
+                x = center_x + edge_choice * (width/2 - edge_buffer)
+                z = random.uniform(center_z - depth/2 + edge_buffer, 
+                                   center_z + depth/2 - edge_buffer)
             else:
-                x = random.uniform(center_x - width/2, center_x + width/2)
-                z = random.choice([center_z - depth/2, center_z + depth/2])
+                edge_choice = random.choice([-1, 1])
+                x = random.uniform(center_x - width/2 + edge_buffer, 
+                                   center_x + width/2 - edge_buffer)
+                z = center_z + edge_choice * (depth/2 - edge_buffer)
         else:
             x = center_x + random.gauss(0, width/4)
             z = center_z + random.gauss(0, depth/4)
