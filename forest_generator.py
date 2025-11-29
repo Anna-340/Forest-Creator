@@ -565,20 +565,20 @@ class ForestCreator(QtWidgets.QDialog):
     def finalize_scene(self):
         cmds.refresh()
 
-def show_forest_dresser():
-    global forest_dresser_window
+def show_forest_creator():
+    global forest_creator_window
 
     try:
-        forest_dresser_window.close()
+        forest_creator_window.close()
     except:
         pass
 
-    forest_dresser_window = ForestCreator()
-    forest_dresser_window.show()
+    forest_creator_window = ForestCreator()
+    forest_creator_window.show()
 
 
 if __name__ == "__main__":
-    show_forest_dresser()
+    show_forest_creator()
 
 
 
