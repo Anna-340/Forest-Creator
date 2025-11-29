@@ -424,6 +424,11 @@ class ForestCreator(QtWidgets.QDialog):
     def randomize_all_colors(self):
         self.set_color_btn('tree_trunk', QColor(random.randint(50, 150), 
         random.randint(30, 80), random.randint(10, 50)))
+        self.set_color_btn('tree_leaves', QColor(random.randint(0, 100), 
+        random.randint(100, 200), random.randint(0, 100)))
+
+        gray_val = random.randint(50, 150)
+    
     
     def apply_color_to_obj(self):
         pass
