@@ -604,7 +604,7 @@ class ForestCreator(QtWidgets.QDialog):
         elif falloff_type == "Center":
             radius = min(width, depth) / 2
             angle = random.uniform(0, 2 * math.pi)
-            dist = random.uniform(0, radius) * random.uniform(0, 1)
+            dist = math.sqrt(random.uniform(0, 1)) * radius
             x = center_x + math.cos(angle) * dist
             z = center_z + math.sin(angle) * dist
         elif falloff_type == "Edges":
