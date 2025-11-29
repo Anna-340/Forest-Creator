@@ -374,7 +374,15 @@ class ForestCreator(QtWidgets.QDialog):
         return QColor('#FFFFFF')
 
     def apply_tree_colors(self):
-        trunk_color = self.get_btn
+        trunk_color = self.get_btn_color(self.tree_trunk_color_btn)
+        leaves_color = self.get_btn_color(self.tree_leaves_color_btn)
+
+        trees = cmds.ls("tree_*", "Forest_Trees", type="transform")
+        valid_trees = [t for t in trees if cmds.objExists(t) and t not in self.generate_base_assets.values()]
+
+        for tree in valid_trees:
+            self.color_tree(tree, trunk_color, leaves_color)
+        self.status_label.setText(f"Applied colors to {len(valid_trees)} trees")
 
     def color_tree(self, tree, trunk_color, leaves_color):
         pass
