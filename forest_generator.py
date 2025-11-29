@@ -635,10 +635,15 @@ class ForestCreator(QtWidgets.QDialog):
         self.collision_spheres.append((position, radius))    
 
     def check_collision(self, x, z, min_spacing):
+        if not self.collision_spheres:
+            return False
+        
         for sphere in self.collision_spheres:
             pos, radius = sphere
             distance = math.sqrt((x - pos[0])**2 + (z -pos[2])**2)
-            if distance < (radius + min_spacing) * self.collision_multiplier.value():
+            effective_radius = max(radius, min_spacing / 2)
+
+            if distance < (effective_radius + min_spacing) * self.collision_multiplier.value():
                 return True
         return False
 
