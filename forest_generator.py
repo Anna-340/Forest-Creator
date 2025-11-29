@@ -618,7 +618,15 @@ class ForestCreator(QtWidgets.QDialog):
         if self.random_rotation.isChecked():
             cmds.rotate(0, random.uniform(0, 360), 0, asset)
 
-        self.snap_to_ground(asset)          
+        self.snap_to_ground(asset)     
+
+    def snap_to_ground(self, asset):
+        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
+                            scale=True)
+        bbox = cmds.exactWorldBoundingBox(asset)
+        lowest_point = bbox[1]
+        move_amount = -lowest_point
+        cmds.move(move_amount, asset, moveY=True, relative=True)     
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
@@ -667,14 +675,6 @@ class ForestCreator(QtWidgets.QDialog):
             if distance < (effective_radius + min_spacing) * self.collision_multiplier.value():
                 return True
         return False  
-
-    def snap_to_ground(self, asset):
-        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
-                            scale=True)
-        bbox = cmds.exactWorldBoundingBox(asset)
-        lowest_point = bbox[1]
-        move_amount = -lowest_point
-        cmds.move(move_amount, asset, moveY=True, relative=True)
 
     def clear_previous_scatter(self):
         self.collision_spheres = []
