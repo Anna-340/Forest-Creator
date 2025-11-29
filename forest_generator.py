@@ -414,9 +414,12 @@ class ForestCreator(QtWidgets.QDialog):
                 self.apply_color_to_obj(child, stem_color)
             elif 'cap' in child_name.lower():
                 self.apply_color_to_obj(child, cap_color)
-                
+
     def apply_all_colors(self):
-        pass
+        self.apply_tree_colors()
+        self.apply_rock_color()
+        self.apply_mushroom_colors()
+        self.status_label.setText("Applied all colors to entire forest!")
 
     def randomize_all_colors(self):
         pass
