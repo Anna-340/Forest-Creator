@@ -14,11 +14,6 @@ import maya.OpenMaya as om
 
 class ForestCreator(QtWidgets.QDialog):
 
-     #def for creating forest, 
-    # duplicate assets for scattering around area from user settings
-    # add random shuffle too
-    # for each of the assets find a place on the plane where they wont overlap
-
     def __init__(self, parent=None):
         super(ForestCreator, self).__init__(parent)
         self.setWindowTitle("Forest Creator! :D")
