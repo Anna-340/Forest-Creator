@@ -508,6 +508,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.status_label.setText("Starting forest generation!")
         try:
             self.clear_previous_scatter()
+            self.collision_spheres = []
             for asset_type, asset in self.generated_assets.items():
                 if not cmds.objExists(asset):
                     self.generate_base_assets()
