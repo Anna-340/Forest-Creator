@@ -550,7 +550,6 @@ class ForestCreator(QtWidgets.QDialog):
                 return True
         return False
 
-
     def add_collision_sph(self, asset, position):
         bbox = cmds.exactWorldBoundingBox(asset)
         width = bbox[3] - bbox[0]
