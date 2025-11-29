@@ -133,7 +133,7 @@ class ForestCreator(QtWidgets.QDialog):
         return group
 
     def create_rock_controls(self):
-        group = QgroupBox("Rocks")
+        group = QGroupBox("Rocks")
         layout = QGridLayout(group)
         self.rock_enabled = QCheckBox("Generate Rocks")
         self.rock_enabled.setChecked(True)
@@ -333,8 +333,7 @@ class ForestCreator(QtWidgets.QDialog):
 
     def create_color_btn(self, default_color, color_type):
         button = QPushButton()
-        button.setStyleSheet(f"background-color {default_color}; 
-                             border: 1px solid #666;")
+        button.setStyleSheet(f"background-color {default_color}; border: 1px solid #666;")
         button.setFixedSize(60, 25)
         button.clicked.connect(lambda: self.choose_color(color_type))
         return button
