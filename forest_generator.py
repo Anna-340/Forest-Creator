@@ -585,6 +585,17 @@ class ForestCreator(QtWidgets.QDialog):
             self.status_label.setText(f"Error during generation: {str(e)}")
             cmds.warning(f"Forest generation error: {str(e)}")
 
+    def add_collision_sph(self, asset, position):
+        bbox = cmds.exactWorldBoundingBox(asset)
+
+        width = bbox[3] - bbox[0]
+        height = bbox[4] - bbox[1]
+        depth = bbox[5] - bbox[2]
+        
+        radius = max(width, depth) / 2
+        radius *= 1.1
+
+        self.collision_spheres.append((position, radius))  
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
@@ -619,20 +630,7 @@ class ForestCreator(QtWidgets.QDialog):
             z = center_z + random.gauss(0, depth/4)
             x = max(center_x - width/2, min(center_x + width/2, x))
             z = max(center_z - depth/2, min(center_z + depth/2, z))
-        return x, z
-    
-    def add_collision_sph(self, asset, position):
-        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, scale=True)
-        bbox = cmds.exactWorldBoundingBox(asset)
-
-        width = bbox[3] - bbox[0]
-        height = bbox[4] - bbox[1]
-        depth = bbox[5] - bbox[2]
-        
-        radius = max(width, depth) / 2
-        radius *= 1.1
-
-        self.collision_spheres.append((position, radius))    
+        return x, z  
 
     def check_collision(self, x, z, min_spacing):
         if not self.collision_spheres:
