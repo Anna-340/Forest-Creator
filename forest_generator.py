@@ -103,7 +103,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.tree_enabled.setChecked(True)
         layout.addWidget(self.tree_enabled, 0, 0, 1, 2)
         
-        layout.addWidget(Qlabel("Tree Count:"), 1, 0)
+        layout.addWidget(QLabel("Tree Count:"), 1, 0)
         self.tree_count = QSpinBox()
         self.tree_count.setRange(1, 100)
         self.tree_count.setValue(15)
@@ -125,7 +125,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.rock_enabled.setChecked(True)
         layout.addWidget(self.rock_enabled, 0, 0, 1, 2)
         
-        layout.addWidget(Qlabel("Rock Count:"), 1, 0)
+        layout.addWidget(QLabel("Rock Count:"), 1, 0)
         self.rock_count = QSpinBox()
         self.rock_count.setRange(1, 50)
         self.rock_count.setValue(10)
@@ -146,7 +146,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.mushroom_enabled.setChecked(True)
         layout.addWidget(self.mushroom_enabled, 0, 0, 1, 2)
         
-        layout.addWidget(Qlabel("Mushroom Count:"), 1, 0)
+        layout.addWidget(QLabel("Mushroom Count:"), 1, 0)
         self.mushroom_count = QSpinBox()
         self.mushroom_count.setRange(1, 30)
         self.mushroom_count.setValue(8)
