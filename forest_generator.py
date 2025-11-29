@@ -509,6 +509,23 @@ class ForestCreator(QtWidgets.QDialog):
         try:
             self.clear_previous_scatter()
             self.collision_spheres = []
+            area = 20.0 * 20.0
+            min_radius = self.min_spacing.value() * 0.5
+            max_amt_objs = int(area / (math.pi * min_radius**2))
+
+            total_requested = 0
+            if self.tree_enabled.isChecked():
+                total_requested += self.tree_count.value()
+            if self.rock_enabled.isChecked():
+                total_requested += self.rock_count.value()
+            if self.mushroom_enabled.isChecked():
+                total_requested += self.mushroom_count.value()
+
+            if total_requested > max_amt_objs * 0.8:
+                self.status_label.setText(
+                f"Warning: Many assets might cause collisions. Max recommended: {int(max_amt_objs * 0.8)}")
+                QtCore.QCoreApplication.processEvents()
+
             for asset_type, asset in self.generated_assets.items():
                 if not cmds.objExists(asset):
                     self.generate_base_assets()
