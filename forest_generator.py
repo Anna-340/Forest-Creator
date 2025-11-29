@@ -108,7 +108,6 @@ class ForestCreator(QtWidgets.QDialog):
         layout.addWidget(controls_group)
         layout.addStretch()
         return tab
-        
 
     def create_tree_controls(self):
         group = QGroupBox("Trees")
@@ -202,8 +201,6 @@ class ForestCreator(QtWidgets.QDialog):
 
         return tab
 
-
-
     def create_collision_controls(self):
         group = QGroupBox("Collision Avoidance")
         layout = QGridLayout(group)
@@ -277,7 +274,6 @@ class ForestCreator(QtWidgets.QDialog):
         
         return group
 
-
     def create_rock_color_controls(self):
         group = QGroupBox("Rock Coloring")
         layout = QGridLayout(group)
@@ -311,7 +307,6 @@ class ForestCreator(QtWidgets.QDialog):
         layout.addWidget(apply_btn, 2, 0, 1, 2)
 
         return group
-
 
     def create_global_color_controls(self):
         group = QGroupBox("Global Color Controls")
@@ -472,7 +467,6 @@ class ForestCreator(QtWidgets.QDialog):
                 return (x, 0, z)
         return None
 
-        
     def get_distributed_pos(self, width, depth, center_x, center_z):
         falloff_type = self.density_falloff.currentText()
 
