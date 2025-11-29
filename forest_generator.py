@@ -732,9 +732,5 @@ def show_forest_creator():
     forest_creator_window = ForestCreator()
     forest_creator_window.show()
 
-
 if __name__ == "__main__":
     show_forest_creator()
-
-
-
