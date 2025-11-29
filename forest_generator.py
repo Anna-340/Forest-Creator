@@ -465,9 +465,9 @@ class ForestCreator(QtWidgets.QDialog):
         elif falloff_type == "Edges":
             if random.choice([True, False]):
                 x = random.choice([center_x - width/2, center_x + width/2])
-                z = random.uniform([center_z - depth/2, center_z + depth/2])
+                z = random.uniform(center_z - depth/2, center_z + depth/2)
             else:
-                x = random.uniform([center_x - width/2, center_x + width/2])
+                x = random.uniform(center_x - width/2, center_x + width/2)
                 z = random.choice([center_z - depth/2, center_z + depth/2])
         else:
             x = center_x + random.gauss(0, width/4)
