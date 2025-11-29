@@ -71,7 +71,7 @@ class ForestCreator(QtWidgets.QDialog):
 
         clear_btn = QPushButton("Clear Scene")
         clear_btn.setStyleSheet(
-            "QPushButton { backgound-color: #8B4513; color: " \
+            "QPushButton { background-color: #8B4513; color: " \
             "white; padding: 8px;}")
         clear_btn.clicked.connect(self.clear_scene_dialog)
         action_layout.addWidget(clear_btn)
