@@ -592,8 +592,13 @@ class ForestCreator(QtWidgets.QDialog):
         height = bbox[4] - bbox[1]
         depth = bbox[5] - bbox[2]
         
-        radius = max(width, depth) / 2
-        radius *= 1.3
+        diagonal = math.sqrt(width**2 + depth** 2)
+        radius = diagonal / 2
+        
+        if 'tree' in asset:
+            radius *= 1.5
+        else:
+            radius *= 1.4
 
         self.collision_spheres.append((position, radius))  
 
