@@ -700,22 +700,29 @@ class ForestCreator(QtWidgets.QDialog):
     def clear_scene(self):
         try:
             self.clear_previous_scatter()
-            for asset_name, asset in self.generated_assets.items():
-                if cmds.objExists(asset):
-                    try:
-                        cmds.delete(asset)
-                    except:
-                        pass
+            forest_patterns = ["Forest_*", "tree_*", "rock_*", "mushroom_*", 
+                               "base_tree", "full_mushroom"]
+
+            for pattern in forest_patterns:
+                objects = cmds.ls(pattern, type="transform")
+                for obj in objects:
+                    if cmds.objExists(obj) and obj not in self.generated_assets.values():
+                        try:
+                            cmds.delete(obj)
+                        except:
+                            pass
+            
+            shaders = cmds.ls("*_shader", "*SGH", type="shadingEngine")
+            for shader in shaders:
+                try:
+                    if cmds.objExists(shader):
+                        cmds.delete(shader)
+                except:
+                    pass
 
             self.generate_base_assets()
-            forest_objects = cmds.ls("Forest_*", "tree_*", "rock_*", "mushroom_*")
-            for obj in forest_objects:  
-                if cmds.objExists(obj) and obj not in self.generated_assets.values():
-                    try:
-                        cmds.delete(obj)
-                    except:
-                        pass
-            self.status_label.setText("Scene cleared")
+            self.status_label.setText("Scene cleared successfully")
+
         except Exception as e:
             self.status_label.setText(f"Error clearing scene: {str(e)}")
             cmds.warning(f"Scene clearing error: {str(e)}")
