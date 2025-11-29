@@ -368,8 +368,8 @@ class ForestCreator(QtWidgets.QDialog):
 
         trees = cmds.ls("tree_*", "Forest_Trees", type="transform")
         valid_trees = [
-            t for t in trees if cmds.objExists(t) and t not in self.generate_base_assets.values()
-            ]
+        t for t in trees if cmds.objExists(t) and t not in self.generated_assets.values()
+        ]
 
         for tree in valid_trees:
             self.color_tree(tree, trunk_color, leaves_color)
@@ -388,14 +388,23 @@ class ForestCreator(QtWidgets.QDialog):
         base_color = self.get_btn_color(self.rock_color_btn)
         rocks = cmds.ls("rock_*", "Forest_Rocks", type="transform")
         valid_rocks = [
-            r for r in rocks if cmds.objExists(r) and r not in self.generated_assets.values()
+        r for r in rocks if cmds.objExists(r) and r not in self.generated_assets.values()
             ]
         for rock in valid_rocks:
             self.apply_color_to_obj(rock, base_color)
         self.status_label.setText(f"Applied colors to {len(valid_rocks)} rocks")
 
     def apply_mushroom_colors(self):
-        pass
+        stem_color = self.get_btn_color(self.mushroom_stem_color_btn)
+        cap_color = self.get_btn_color(self.mushroom_cap_color_btn)
+        mushrooms = cmds.ls("mushroom_*", "Forest_Mushrooms", type="transform")
+        valid_mushrooms = [
+        m for m in mushrooms if cmds.objExists(m) and m not in self.generated_assets.values()
+        ]
+        for mushroom in valid_mushrooms:
+            self.color_mushroom(mushroom, stem_color, cap_color)
+        self.status_label.setText(
+        f"Applied colors to {len(valid_mushrooms)} mushrooms")
 
     def color_mushroom(self, mushroom, stem_color, cap_color):
         pass
