@@ -345,13 +345,13 @@ class ForestCreator(QtWidgets.QDialog):
             button.setStyleSheet(
                 f"background-color: {color.name()}; border: 1px solid #666;")
 
-    def get_btn_color(self):
-        pass
+    def get_btn_color(self, button):
+        style =
 
     def apply_tree_colors(self):
         pass
 
-    def color_tree(self):
+    def color_tree(self, tree, trunk_color, leaves_color):
         pass
 
     def apply_rock_color(self):
@@ -360,7 +360,7 @@ class ForestCreator(QtWidgets.QDialog):
     def apply_mushroom_colors(self):
         pass
 
-    def color_mushroom(self):
+    def color_mushroom(self, mushroom, stem_color, cap_color):
         pass
 
     def apply_all_colors(self):
