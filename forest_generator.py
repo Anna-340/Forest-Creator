@@ -669,7 +669,7 @@ class ForestCreator(QtWidgets.QDialog):
         
         for sphere in self.collision_spheres:
             pos, radius = sphere
-            distance = math.sqrt((x - pos[0])**2 + (z -pos[2])**2)
+            distance = math.sqrt((x - pos[0])**2 + (z - pos[2])**2)
             effective_radius = max(radius, min_spacing / 2)
 
             if distance < (effective_radius + min_spacing) * self.collision_multiplier.value():
