@@ -422,7 +422,8 @@ class ForestCreator(QtWidgets.QDialog):
         self.status_label.setText("Applied all colors to entire forest!")
 
     def randomize_all_colors(self):
-        pass
+        self.set_color_btn('tree_trunk', QColor(random.randint(50, 150), 
+        random.randint(30, 80), random.randint(10, 50)))
     
     def apply_color_to_obj(self):
         pass
