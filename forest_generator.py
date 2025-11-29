@@ -211,7 +211,6 @@ class ForestCreator(QtWidgets.QDialog):
 
         return group
 
-
     def create_scale_controls(self):
         group = QGroupBox("Scale & Rotation Variation")
         layout = QGridLayout(group)
@@ -368,7 +367,9 @@ class ForestCreator(QtWidgets.QDialog):
         leaves_color = self.get_btn_color(self.tree_leaves_color_btn)
 
         trees = cmds.ls("tree_*", "Forest_Trees", type="transform")
-        valid_trees = [t for t in trees if cmds.objExists(t) and t not in self.generate_base_assets.values()]
+        valid_trees = [
+            t for t in trees if cmds.objExists(t) and t not in self.generate_base_assets.values()
+            ]
 
         for tree in valid_trees:
             self.color_tree(tree, trunk_color, leaves_color)
@@ -384,7 +385,14 @@ class ForestCreator(QtWidgets.QDialog):
                 self.apply_color_to_obj(child, leaves_color)
 
     def apply_rock_color(self):
-        pass
+        base_color = self.get_btn_color(self.rock_color_btn)
+        rocks = cmds.ls("rock_*", "Forest_Rocks", type="transform")
+        valid_rocks = [
+            r for r in rocks if cmds.objExists(r) and r not in self.generated_assets.values()
+            ]
+        for rock in valid_rocks:
+            self.apply_color_to_obj(rock, base_color)
+        self.status_label.setText(f"Applied colors to {len(valid_rocks)} rocks")
 
     def apply_mushroom_colors(self):
         pass
