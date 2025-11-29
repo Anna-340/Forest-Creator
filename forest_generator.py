@@ -438,7 +438,9 @@ class ForestCreator(QtWidgets.QDialog):
         self.status_label.setText("Randomized all color settings!")
 
     def apply_color_to_obj(self, obj, color):
-        red = color.red
+        red = color.red() / 255.0
+        green = color.green() / 255.0
+        blue = color.blue() / 255.0
 
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
