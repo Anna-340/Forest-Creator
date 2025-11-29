@@ -385,7 +385,13 @@ class ForestCreator(QtWidgets.QDialog):
         self.status_label.setText(f"Applied colors to {len(valid_trees)} trees")
 
     def color_tree(self, tree, trunk_color, leaves_color):
-        pass
+        children = cmds.listRelatives(tree, children=True, fullPath=True) or []
+        for child in children:
+            child_name = child.split('|')[-1]
+            if 'trunk' in child_name.lower():
+                self.apply_color_to_obj(child, trunk_color)
+            elif 'leaves' in child_name.lower():
+                self.apply_color_to_obj(child, leaves_color)
 
     def apply_rock_color(self):
         pass
