@@ -557,7 +557,7 @@ class ForestCreator(QtWidgets.QDialog):
                         cmds.delete(obj)
                     except:
                         pass
-            self.status_label.setTExt("Scene cleared")
+            self.status_label.setText("Scene cleared")
         except Exception as e:
             self.status_label.setText(f"Error clearing scene: {str(e)}")
             cmds.warning(f"Scene clearing error: {str(e)}")
