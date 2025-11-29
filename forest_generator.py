@@ -407,8 +407,14 @@ class ForestCreator(QtWidgets.QDialog):
         f"Applied colors to {len(valid_mushrooms)} mushrooms")
 
     def color_mushroom(self, mushroom, stem_color, cap_color):
-        pass
-
+        children = cmds.listRelatives(mushroom, children=True, fullPath=True) or []
+        for child in children:
+            child_name = child.split('|')[-1]
+            if 'stem' in child_name.lower():
+                self.apply_color_to_obj(child, stem_color)
+            elif 'cap' in child_name.lower():
+                self.apply_color_to_obj(child, cap_color)
+                
     def apply_all_colors(self):
         pass
 
