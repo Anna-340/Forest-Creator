@@ -41,7 +41,7 @@ class ForestCreator(QtWidgets.QDialog):
         
         tab_widget = QTabWidget()
         tab_widget.setStyleSheet("""
-                                QtabWidget::pane { border: 1px solid #C4C4C4; }
+                                QTabWidget::pane { border: 1px solid #C4C4C4; }
                                 QTabBar::tab {background: #F0F0F0; 
                                 padding: 8px 12px; 
                                 margin-right: 2px;}
