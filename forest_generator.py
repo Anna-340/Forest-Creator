@@ -482,7 +482,7 @@ class ForestCreator(QtWidgets.QDialog):
             distance = math.sqrt((x - pos[0])**2 + (z -pos[2])**2)
             if distance < (radius + min_spacing) * self.collision_multiplier.value():
                 return True
-            return False
+        return False
 
 
     def add_collision_sph(self, asset, position):
