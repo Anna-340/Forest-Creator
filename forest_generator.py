@@ -597,6 +597,29 @@ class ForestCreator(QtWidgets.QDialog):
 
         self.collision_spheres.append((position, radius))  
 
+    def apply_asset_trans(self, asset, position, asset_type):
+        x, y, z = position
+        cmds.move(x, y, z, asset)
+        scale = random.uniform(self.scale_min.value(), self.scale_max.value())
+
+        if asset_type == 'tree':
+            height_scale = scale * random.uniform(
+                1 - self.tree_height_var.value(), 
+                1 + self.tree_height_var.value())
+            cmds.scale(scale, height_scale, scale, asset)
+        elif asset_type == 'rock':
+            rock_scale = scale * random.uniform(1 - self.rock_size_var.value(), 
+                                                1 + self.rock_size_var.value())
+            cmds.scale(rock_scale, 
+                    rock_scale * random.uniform(0.8, 1.2), rock_scale, asset)
+        else:
+            cmds.scale(scale, scale, scale, asset)
+
+        if self.random_rotation.isChecked():
+            cmds.rotate(0, random.uniform(0, 360), 0, asset)
+
+        self.snap_to_ground(asset)          
+
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
         for attempt in range(max_attempts):
@@ -643,30 +666,7 @@ class ForestCreator(QtWidgets.QDialog):
 
             if distance < (effective_radius + min_spacing) * self.collision_multiplier.value():
                 return True
-        return False
-
-    def apply_asset_trans(self, asset, position, asset_type):
-        x, y, z = position
-        cmds.move(x, y, z, asset)
-        scale = random.uniform(self.scale_min.value(), self.scale_max.value())
-
-        if asset_type == 'tree':
-            height_scale = scale * random.uniform(
-                1 - self.tree_height_var.value(), 
-                1 + self.tree_height_var.value())
-            cmds.scale(scale, height_scale, scale, asset)
-        elif asset_type == 'rock':
-            rock_scale = scale * random.uniform(1 - self.rock_size_var.value(), 
-                                                1 + self.rock_size_var.value())
-            cmds.scale(rock_scale, 
-                    rock_scale * random.uniform(0.8, 1.2), rock_scale, asset)
-        else:
-            cmds.scale(scale, scale, scale, asset)
-
-        if self.random_rotation.isChecked():
-            cmds.rotate(0, random.uniform(0, 360), 0, asset)
-
-        self.snap_to_ground(asset)            
+        return False  
 
     def snap_to_ground(self, asset):
         cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, 
