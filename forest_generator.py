@@ -346,7 +346,13 @@ class ForestCreator(QtWidgets.QDialog):
                 f"background-color: {color.name()}; border: 1px solid #666;")
 
     def get_btn_color(self, button):
-        style =
+        style = button.styleSheet()
+        import re
+        match = re.search(r'background-color:\s*([^;]+);', style)
+        if match:
+            color_str = match.group(1)
+            return QColor(color_str)
+        return QColor('#FFFFFF')
 
     def apply_tree_colors(self):
         pass
