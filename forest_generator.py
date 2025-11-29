@@ -333,8 +333,13 @@ class ForestCreator(QtWidgets.QDialog):
                      }
         return Qcolor(color_map.get(color_type, '#FFFFFF'))
 
-    def set_color_btn(self):
-        pass
+    def set_color_btn(self, color_type, color):
+        button_map = {'tree_trunk': self.tree_trunk_color_btn,
+                      'tree_leaves': self.tree_leaves_color_btn,
+                      'rock': self.rock_color_btn, 
+                      'mushroom_stem': self.mushroom_stem_color_btn,
+                      'mushroom_cap': self.mushroom_cap_color_btn
+                      }
 
     def get_btn_color(self):
         pass
