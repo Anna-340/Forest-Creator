@@ -562,6 +562,7 @@ class ForestCreator(QtWidgets.QDialog):
 
                     new_asset = cmds.duplicate(
                         base_asset, name=f"{asset_type}_{placed_count}")[0]
+                    
                     self.apply_asset_trans(new_asset, position, asset_type)
 
                     if self.collision_enabled.isChecked():
@@ -620,6 +621,19 @@ class ForestCreator(QtWidgets.QDialog):
             z = max(center_z - depth/2, min(center_z + depth/2, z))
         return x, z
     
+    def add_collision_sph(self, asset, position):
+        cmds.makeIdentity(asset, apply=True, translate=True, rotate=True, scale=True)
+        bbox = cmds.exactWorldBoundingBox(asset)
+
+        width = bbox[3] - bbox[0]
+        height = bbox[4] - bbox[1]
+        depth = bbox[5] - bbox[2]
+        
+        radius = max(width, depth) / 2
+        radius *= 1.1
+
+        self.collision_spheres.append((position, radius))    
+
     def check_collision(self, x, z, min_spacing):
         for sphere in self.collision_spheres:
             pos, radius = sphere
@@ -627,13 +641,6 @@ class ForestCreator(QtWidgets.QDialog):
             if distance < (radius + min_spacing) * self.collision_multiplier.value():
                 return True
         return False
-
-    def add_collision_sph(self, asset, position):
-        bbox = cmds.exactWorldBoundingBox(asset)
-        width = bbox[3] - bbox[0]
-        depth = bbox[5] - bbox[2]
-        radius = max(width, depth) / 2
-        self.collision_spheres.append((position, radius))
 
     def apply_asset_trans(self, asset, position, asset_type):
         x, y, z = position
