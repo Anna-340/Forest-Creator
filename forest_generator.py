@@ -340,6 +340,10 @@ class ForestCreator(QtWidgets.QDialog):
                       'mushroom_stem': self.mushroom_stem_color_btn,
                       'mushroom_cap': self.mushroom_cap_color_btn
                       }
+        button = button_map.get(color_type)
+        if button:
+            button.setStyleSheet(
+                f"background-color: {color.name()}; border: 1px solid #666;")
 
     def get_btn_color(self):
         pass
