@@ -2,6 +2,7 @@ import os
 import json
 import random
 import math
+import re
 from PySide2 import QtWidgets, QtCore, QtGui
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -357,7 +358,6 @@ class ForestCreator(QtWidgets.QDialog):
 
     def get_btn_color(self, button):
         style = button.styleSheet()
-        import re
         match = re.search(r'background-color:\s*([^;]+);', style)
         if match:
             color_str = match.group(1)
