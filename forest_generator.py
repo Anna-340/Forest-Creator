@@ -97,7 +97,7 @@ class ForestCreator(QtWidgets.QDialog):
         
 
     def create_tree_controls(self):
-        group = QgroupBox("Trees")
+        group = QGroupBox("Trees")
         layout = QGridLayout(group)
         self.tree_enabled = QCheckBox("Generate Trees")
         self.tree_enabled.setChecked(True)
@@ -140,7 +140,7 @@ class ForestCreator(QtWidgets.QDialog):
         return group
 
     def create_mushroom_controls(self):
-        group = QgroupBox("Mushrooms")
+        group = QGroupBox("Mushrooms")
         layout = QGridLayout(group)
         self.mushroom_enabled = QCheckBox("Generate Mushrooms")
         self.mushroom_enabled.setChecked(True)
@@ -263,7 +263,7 @@ class ForestCreator(QtWidgets.QDialog):
 
 
     def create_rock_color_controls(self):
-        group = QgroupBox("Rock Coloring")
+        group = QGroupBox("Rock Coloring")
         layout = QGridLayout(group)
 
         layout.addWidget(QLabel("Rock Base Color:"), 0, 0)
