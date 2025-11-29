@@ -505,7 +505,14 @@ class ForestCreator(QtWidgets.QDialog):
         return mushroom_group
     
     def generate_forest(self):
-        pass
+        self.status_label.setText("Starting forest generation!")
+        try:
+            self.clear_previous_scatter()
+            for asset_type, asset in self.generated_assets.items():
+                if not cmds.objExists(asset):
+                    self.generate_base_assets()
+                    break
+                cmds.showHidden(asset)
 
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
