@@ -215,7 +215,7 @@ class ForestCreator(QtWidgets.QDialog):
         self.scale_min.setValue(0.7)
         layout.addWidget(self.scale_min, 0, 1)
 
-        layout.addWidget(OLabel("Global Scale Max:"), 1, 0)
+        layout.addWidget(QLabel("Global Scale Max:"), 1, 0)
         self.scale_max = QDoubleSpinBox()
         self.scale_max.setRange(0.1, 3.0)
         self.scale_max.setValue(1.3)
