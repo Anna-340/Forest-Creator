@@ -593,7 +593,7 @@ class ForestCreator(QtWidgets.QDialog):
         depth = bbox[5] - bbox[2]
         
         radius = max(width, depth) / 2
-        radius *= 1.1
+        radius *= 1.3
 
         self.collision_spheres.append((position, radius))  
 
