@@ -428,6 +428,11 @@ class ForestCreator(QtWidgets.QDialog):
         random.randint(100, 200), random.randint(0, 100)))
 
         gray_val = random.randint(50, 150)
+        self.set_color_btn('rock', QColor(gray_val, gray_val, gray_val))
+
+        self.set_color_btn('mushroom_stem', QColor(random.randint(200, 255), 
+        random.randint(200, 255), random.randint(180, 220)))
+    
     
     
     def apply_color_to_obj(self):
