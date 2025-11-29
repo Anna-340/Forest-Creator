@@ -451,6 +451,10 @@ class ForestCreator(QtWidgets.QDialog):
         else:
             shader = shader_name
 
+        cmds.setAttr(f'{shader}.color', red, green, blue, type='double3')
+        cmds.select(obj)
+        cmds.hyperShade(assign=shader)
+
     def create_tree(self):
         trunk = cmds.polyCylinder(radius=0.3, height=4, sx=8, sy=4, sz=1,
                                   name="tree_trunk")[0]
