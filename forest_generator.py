@@ -52,6 +52,16 @@ class ForestCreator(QtWidgets.QDialog):
                                 QTabBar::tab:selected {background: #2e8b57; 
                                 color: white;}""")
         
+        self.asset_tab = self.create_asset_tab()
+        self.scatter_tab = self.create_scatter_tab()
+        self.coloring_tab = self.create_coloring_tab()
+
+        tab_widget.addTab(self.asset_tab, "Asset Generation")
+        tab_widget.addTab(self.scatter_tab, "Scattering Controls")
+        tab_widget.addTab(self.coloring_tab, "Coloring")
+
+        main_layout.addWidget(tab_widget)
+        self.add_action_btns(main_layout)
         self.status_bar(main_layout)
         
     def add_action_btns(self, layout):
