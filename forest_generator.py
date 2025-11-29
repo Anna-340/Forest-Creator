@@ -432,9 +432,11 @@ class ForestCreator(QtWidgets.QDialog):
 
         self.set_color_btn('mushroom_stem', QColor(random.randint(200, 255), 
         random.randint(200, 255), random.randint(180, 220)))
-    
-    
-    
+        self.set_color_btn('mushroom_cap', QColor(random.randint(150, 255), 
+        random.randint(50, 200), random.randint(50, 200)))
+
+        self.status_label.setText("Randomized all color settings!")
+
     def apply_color_to_obj(self):
         pass
 
