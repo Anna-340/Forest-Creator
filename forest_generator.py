@@ -544,6 +544,27 @@ class ForestCreator(QtWidgets.QDialog):
             total_assets = len(assets_to_scatter)
             placed_count = 0
 
+            for ast, asset_type in enumerate(assets_to_scatter):
+                if ast % 10 == 0:
+                    self.status_label.setText(
+                        f"Placing {asset_type}s... ({ast}/{total_assets})")
+                    QtCore.QCoreApplication.processEvents()
+
+                    position = self.find_valid_pos(area_width, 
+                    aread_depth, center_x, center_z, self.min_spacing.value(), 
+                    self.placement_attempts.value())
+                
+                if position:
+                    base_asset = self.generated_assets[asset_type]
+                    cmds.showHidden(base_asset)
+
+                    new_asset = cmds.duplicate(
+                        base_asset, name=f"{asset_type}_{placed_count}")[0]
+                    self.apply_asset_trans(new_asset, position, asset_type)
+
+                    if self.collision_enabled.isChecked():
+
+
     def find_valid_pos(self, width, depth, center_x, 
                        center_z, min_spacing, max_attempts):
         for attempt in range(max_attempts):
